@@ -3,22 +3,26 @@
 int main()
 {
     cout << "-----------------------------------------" << endl;
-	cout << "Running laplace 3D case" << endl;
+	cout << "2D laplace equation" << endl;
 	cout << "-----------------------------------------" << endl;
-    cout << "Constructing mesh..."<< endl;
-    MESH mesh("mesh/PlateWithHole3D/mesh_1000.dat");
-    //MESH mesh("mesh/PlateWithHole3D/mesh_400.dat");
 	
-    cout << "Assigning material properties..."<< endl;
+    cout << "Constructing mesh..."<< endl;
+    //MESH mesh("msh/PlateWithHole2D/mesh_400.dat");
+    MESH mesh("msh/PlateWithHole2D_O2/mesh_1200.dat");
+	
+	cout << "Assigning material properties..."<< endl;
     MATERIALS materials;
     materials.D = 1;
 
     cout << "Assigning boundary conditions..."<< endl;
     BOUNDARY_CONDITION bc;
-    bc.assignDBC(mesh, "mesh/PlateWithHole3D/top_1000.dat",0);
-    bc.assignDBC(mesh, "mesh/PlateWithHole3D/bottom_1000.dat",10);
-
-    cout << "Initializing field variables..."<< endl;
+    //bc.assignDBC(mesh, "msh/PlateWithHole2D/top_400.dat",0);
+    //bc.assignDBC(mesh, "msh/PlateWithHole2D/bottom_400.dat",10);
+    
+	bc.assignDBC(mesh, "msh/PlateWithHole2D_O2/top_1200.dat",0);
+    bc.assignDBC(mesh, "msh/PlateWithHole2D_O2/bottom_1200.dat",10);
+    
+	cout << "Initializing field variables..."<< endl;
     vector<double> Vx = setVector(mesh.TotalPoints, 0);
     vector<double> Vy = setVector(mesh.TotalPoints, 0);
     vector<double> Vz = setVector(mesh.TotalPoints, 0);
@@ -45,6 +49,4 @@ int main()
     end = clock();
     double time_taken = double(end - start) / double(CLOCKS_PER_SEC);
     cout << "Time taken by program is : " << time_taken << setprecision(10) << " seconds" << endl;
-
-    return 0;
 }

@@ -5,7 +5,7 @@ void solveTransport(MESH mesh, MATERIALS materials, BOUNDARY_CONDITION BC, SOLVE
     cout << "SOLVER START..." << endl;
     pltctrl(mesh.points, mesh.TotalPoints, settings.nt, settings.prnt_freq);
     if (mesh.dim == 2)
-    {printElements(mesh.surfaces, mesh.SurfaceNds, mesh.TotalSurfaces, "elements");}
+    {printElements(mesh.surfaces, mesh.SurfaceNds, mesh.TotalSurfaces, "elems");}
     
     cout << "Computing quadrature points..." << endl;
     GAUSS gauss;
@@ -102,7 +102,7 @@ void solveTransportEBE(MESH mesh, MATERIALS materials, BOUNDARY_CONDITION BC, SO
     cout << "SOLVER START..." << endl;
     pltctrl(mesh.points, mesh.TotalPoints, settings.nt, settings.prnt_freq);
     if (mesh.dim == 2)
-    {printElements(mesh.surfaces, mesh.SurfaceNds, mesh.TotalSurfaces, "elements");}
+    {printElements(mesh.surfaces, mesh.SurfaceNds, mesh.TotalSurfaces, "elems");}
     
 	cout << "Collect element support for each node..." << endl;
     vector<NBR> ndkernels;
@@ -180,7 +180,7 @@ void solveBurger(MESH mesh, MATERIALS materials, BOUNDARY_CONDITIONS BC, SOLVER_
     cout << "SOLVER START..." << endl;
     pltctrl(mesh.points, mesh.TotalPoints, settings.nt, settings.prnt_freq);
     if (mesh.dim == 2)
-    {printElements(mesh.surfaces, mesh.SurfaceNds, mesh.TotalSurfaces, "elements");}
+    {printElements(mesh.surfaces, mesh.SurfaceNds, mesh.TotalSurfaces, "elems");}
     vector<double> zero(mesh.TotalPoints,0);   
     
 	cout << "Computing quadrature points..." << endl;
@@ -255,7 +255,7 @@ void solveBurgerEBE(MESH mesh, MATERIALS materials, BOUNDARY_CONDITIONS BC, SOLV
     cout << "SOLVER START..." << endl;
     pltctrl(mesh.points, mesh.TotalPoints, settings.nt, settings.prnt_freq);
     if (mesh.dim == 2)
-    {printElements(mesh.surfaces, mesh.SurfaceNds, mesh.TotalSurfaces, "elements");}
+    {printElements(mesh.surfaces, mesh.SurfaceNds, mesh.TotalSurfaces, "elems");}
     vector<double> zero(mesh.TotalPoints,0);   
     
 	cout << "Collect element support for each node..." << endl;

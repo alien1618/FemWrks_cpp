@@ -6,7 +6,7 @@ int main()
 	cout << "3D flow past cylinder" << endl;
 	cout << "-----------------------------------------" << endl;
 	cout << "Constructing mesh..."<< endl;
-    MESH mesh("mesh/Venturi3D/mesh_1450.dat");
+    MESH mesh("msh/Venturi3D/mesh_1450.dat");
 
     cout << "Assigning material properties..."<< endl;
     MATERIALS materials;
@@ -16,13 +16,13 @@ int main()
     cout << "Assigning boundary conditions..."<< endl;
     double Vxb = 1;
     BOUNDARY_CONDITIONS bc;
-    bc.Vx.assignDBC(mesh,"mesh/Venturi3D/inlet_1450.dat", Vxb);
-    bc.Vy.assignDBC(mesh,"mesh/Venturi3D/inlet_1450.dat", 0);
-    bc.Vz.assignDBC(mesh,"mesh/Venturi3D/inlet_1450.dat", 0);
-    bc.Vx.assignDBC(mesh,"mesh/Venturi3D/walls_1450.dat", 0);
-    bc.Vy.assignDBC(mesh,"mesh/Venturi3D/walls_1450.dat", 0);
-    bc.Vz.assignDBC(mesh,"mesh/Venturi3D/walls_1450.dat", 0);
-    bc.P.assignDBC(mesh,"mesh/Venturi3D/outlet_1450.dat", 0);
+    bc.Vx.assignDBC(mesh,"msh/Venturi3D/inlet_1450.dat", Vxb);
+    bc.Vy.assignDBC(mesh,"msh/Venturi3D/inlet_1450.dat", 0);
+    bc.Vz.assignDBC(mesh,"msh/Venturi3D/inlet_1450.dat", 0);
+    bc.Vx.assignDBC(mesh,"msh/Venturi3D/walls_1450.dat", 0);
+    bc.Vy.assignDBC(mesh,"msh/Venturi3D/walls_1450.dat", 0);
+    bc.Vz.assignDBC(mesh,"msh/Venturi3D/walls_1450.dat", 0);
+    bc.P.assignDBC(mesh,"msh/Venturi3D/outlet_1450.dat", 0);
 
     cout << "Initializing field variables..."<< endl;
     vector<double> Vx = setVector(mesh.TotalPoints, 1e-6);

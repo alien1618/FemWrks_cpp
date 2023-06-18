@@ -1,54 +1,47 @@
-========================================================================
-To run in Debian:
-========================================================================
-1. Ensure the required packages are installed:
+-----------------------------------------------------------------------------------
+FemWrks
+----------------------------------------------------------------------------------
+FemWrks is a 2D/3D finite element solver written in C++ and is used to solve
+the general transport equation, incompressible navier-stokes equations and can
+be used for stress/deformation analysis. It can use first and second order
+elements and can solve the finite element equations using element-by-element
+technique without the need to form global matrices.
+---------------------------------------------------------------------------------
+FemWrks has been tested to run on Debian and FreeBSD systems. To run FemWrks perform
+the following steps:
+
+1. On Debian, ensure the required packages are installed:
 sudo apt install bash gcc g++ make cmake libomp-dev openmpi-bin libgomp1 build-essential python3 python3-numpy python3-scipy python3-matplotlib
 
-2. Edit permissions to shell script:
-chmod u+x run.sh
-
-3. Inside the FEM2D folder directory run compiler script:
-./run.sh
-
-4. Exporting jpg images of solution is done by:
-python3 plotmesh.py
-
-NOTE: Ensure the name of the variable you want to plot (defined in line 11 in plotmesh.py)
-matches the name of the results in the outputs folder. You also may need to
-edit the scale value to scale the plot as needed
-
-5. To export to video:
-
-cd pictures
-
-ffmpeg -i phi%d.jpg -vcodec mpeg4 phi.avi
-
-where phi is the name of the image sequence you want to export
-
-
-========================================================================
-To run in FreeBSD:
-========================================================================
-1. Ensure the required packages are installed:
+On FreeBSD, ensure the following packages are installed:
 sudo pkg install gcc openmpi openmpi3 gmake cmake python python3 py38-numpy py38-scipy py38-matplotlib
 
-2. Edit permissions to shell script:
-chmod u+x run.sh
+2. Inside the FemWrks folder, edit permissions to shell scripts:
+chmod u+x run.sh cln.sh genvid.sh
 
-3. Run the compiler:
-   bash run.sh
+3. Copy a case study from the examples folder and paste inside the main FemWrks folder. Rename it to "main.cpp"
 
-4. Exporting jpg images of solution is done by:
-python3 plotmesh.py
+4. Run compiler script:
+./run.sh
 
-NOTE: Ensure the name of the variable you want to plot (defined in line 11 in plotmesh.py)
-matches the name of the results in the outputs folder. You also may need to
-edit the scale value to scale the plot as needed
+or on FreeBSD:
+bash run.sh
 
-5. To export to video:
+5. All the simulation results are generated and stored inside the "out" folder. 
+To view the results data in "VTK" format, use any software that open vtk files such as ParaView, VisIt, Salome-platform
 
-cd pictures
+6. Data generated in "TXT" can be used to generate jpg images of the simulation using the included python script:
+python3 pltmsh.py <scale prmtr> <show msh flag> <var 1> <var 2>
 
-ffmpeg -i phi%d.jpg -vcodec mpeg4 phi.avi
+where the first parameter controls the scaling of the plot, the second is 1/0 which shows/hides the mesh, the third parameter is the variable you want plotted.
 
-where phi is the name of the image sequence you want to export
+example:
+python3 pltmsh.py 5 1 U
+
+7. To export to video from the generated jpg images do the following:
+
+./genvid.sh U
+
+where U is the name of the variable that was used to generate the simulation pics in step 5
+
+

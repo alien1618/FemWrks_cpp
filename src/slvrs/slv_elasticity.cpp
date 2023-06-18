@@ -81,7 +81,7 @@ void solveElasticity(MESH mesh, MATERIALS materials, BOUNDARY_CONDITIONS BC, SOL
     cout << "SOLVER START..." << endl;
     pltctrl(mesh.points, mesh.TotalPoints, settings.nt, settings.prnt_freq);
     if (mesh.dim == 2)
-    {printElements(mesh.surfaces, mesh.SurfaceNds, mesh.TotalSurfaces, "elements");}
+    {printElements(mesh.surfaces, mesh.SurfaceNds, mesh.TotalSurfaces, "elems");}
     
     cout << "Initializing variables..." << endl;
     int DOF = mesh.dim;
@@ -338,14 +338,19 @@ void solveElasticity(MESH mesh, MATERIALS materials, BOUNDARY_CONDITIONS BC, SOL
 	mesh.printMeshVTK(deformation, "U", 1);
 	mesh.printMeshVTK(vms,"vms",1);
 	mesh.printMeshVTK(FOS,"fos",1);
-	cout << "SOLVER COMPLETE" << endl;   
+	
+	mesh.printTXT(U, "U", 1);
+    mesh.printTXT(vms, "vms", 1);
+    mesh.printTXT(FOS, "fos", 1);
+
+    cout << "SOLVER COMPLETE" << endl;   
 }
 void solveElasticityEBE(MESH mesh, MATERIALS materials, BOUNDARY_CONDITIONS BC, SOLVER_SETTINGS settings)
 {
     cout << "SOLVER START..." << endl;
     pltctrl(mesh.points, mesh.TotalPoints, settings.nt, settings.prnt_freq);
     if (mesh.dim == 2)
-    {printElements(mesh.surfaces, mesh.SurfaceNds, mesh.TotalSurfaces, "elements");}
+    {printElements(mesh.surfaces, mesh.SurfaceNds, mesh.TotalSurfaces, "elems");}
     
     cout << "Initializing variables..." << endl;
     int DOF = mesh.dim;
@@ -621,5 +626,10 @@ void solveElasticityEBE(MESH mesh, MATERIALS materials, BOUNDARY_CONDITIONS BC, 
 	mesh.printMeshVTK(deformation, "U", 1);
 	mesh.printMeshVTK(vms,"vms",1);
 	mesh.printMeshVTK(FOS,"fos",1);
-	cout << "SOLVER COMPLETE" << endl;   
+	
+	mesh.printTXT(U, "U", 1);
+    mesh.printTXT(vms, "vms", 1);
+    mesh.printTXT(FOS, "fos", 1);
+
+    cout << "SOLVER COMPLETE" << endl;   
 }

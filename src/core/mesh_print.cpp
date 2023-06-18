@@ -204,7 +204,7 @@ void MESH::printTXT(vector<double> U, string filename, int t)
 void printElements(vector<vector<int> > surfaces, int SurfaceNds, int TotalSurfaces, string filename)
 {
     cout << "Printing mesh data to " << filename << "..." << endl;
-    string direc = output_dir+"/geometry/";
+    string direc = output_dir+"/gmtry/";
     mkdir(direc.c_str(), 0777);
     string fname;
     fname = direc + filename + ".txt";
@@ -219,7 +219,7 @@ void printElements(vector<vector<int> > surfaces, int SurfaceNds, int TotalSurfa
 }
 void pltctrl(vector<POINT> points, int TotalPoints, int n_t, int print_frequency)
 {
-    string direc = output_dir+"/geometry/";
+    string direc = output_dir+"/gmtry/";
     mkdir(direc.c_str(), 0777);
 
     string fname;
@@ -238,7 +238,7 @@ void pltctrl(vector<POINT> points, int TotalPoints, int n_t, int print_frequency
         if (points[i].y >= ymax)
         {ymax =  points[i].y;}
     }
-    fname = output_dir+"/geometry/"+"pltctrl.txt";
+    fname = output_dir+"/gmtry/"+"pltctrl.txt";
     ofstream outfile(fname.c_str());
     outfile << n_t << "\t" << print_frequency << "\t" << xmin << "\t" <<  xmax << "\t" << ymin << "\t" << ymax << endl;
     outfile.close();

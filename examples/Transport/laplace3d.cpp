@@ -3,20 +3,20 @@
 int main()
 {
     cout << "-----------------------------------------" << endl;
-	cout << "3D laplace equation" << endl;
+	cout << "Running laplace 3D case" << endl;
 	cout << "-----------------------------------------" << endl;
+
     cout << "Constructing mesh..."<< endl;
-    MESH mesh("mesh/PlateWithHole3D/mesh_1000.dat");
-    //MESH mesh("mesh/PlateWithHole3D/mesh_400.dat");
-	
+    MESH mesh("msh/PlateWithHole3D/mesh_1000.dat");
+
     cout << "Assigning material properties..."<< endl;
     MATERIALS materials;
     materials.D = 1;
 
     cout << "Assigning boundary conditions..."<< endl;
     BOUNDARY_CONDITION bc;
-    bc.assignDBC(mesh, "mesh/PlateWithHole3D/top_1000.dat",0);
-    bc.assignDBC(mesh, "mesh/PlateWithHole3D/bottom_1000.dat",10);
+    bc.assignDBC(mesh, "msh/PlateWithHole3D/top_1000.dat",0);
+    bc.assignDBC(mesh, "msh/PlateWithHole3D/bottom_1000.dat",10);
 
     cout << "Initializing field variables..."<< endl;
     vector<double> Vx = setVector(mesh.TotalPoints, 0);

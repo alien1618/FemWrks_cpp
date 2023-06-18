@@ -5,7 +5,7 @@ void solveNavierStokes(MESH mesh, MATERIALS materials, BOUNDARY_CONDITIONS BC, S
     cout << "SOLVER START..." << endl;
     pltctrl(mesh.points, mesh.TotalPoints, settings.nt, settings.prnt_freq);
     if (mesh.dim == 2)
-    {printElements(mesh.surfaces, mesh.SurfaceNds, mesh.TotalSurfaces, "elements");}
+    {printElements(mesh.surfaces, mesh.SurfaceNds, mesh.TotalSurfaces, "elems");}
     
     cout << "Computing quadrature points..." << endl;
     int TotQuadPnts = 0;
@@ -214,7 +214,7 @@ void solveNavierStokesEBE(MESH mesh, MATERIALS materials, BOUNDARY_CONDITIONS BC
     cout << "SOLVER START..." << endl;
     pltctrl(mesh.points, mesh.TotalPoints, settings.nt, settings.prnt_freq);
     if (mesh.dim == 2)
-    {printElements(mesh.surfaces, mesh.SurfaceNds, mesh.TotalSurfaces, "elements");}
+    {printElements(mesh.surfaces, mesh.SurfaceNds, mesh.TotalSurfaces, "elems");}
     
     cout << "Initializing Variables..." << endl;
     Vx = setVector(Vx, BC.Vx);

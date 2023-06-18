@@ -3,13 +3,13 @@
 int main()
 {
     cout << "-----------------------------------------" << endl;
-	cout << "2D burger equation" << endl;
+	cout << "Running burger 3D case" << endl;
 	cout << "-----------------------------------------" << endl;
-	cout << "Constructing mesh..."<< endl;
+    cout << "Constructing mesh..."<< endl;
     POINT p(0,0,0);
     DOMAIN s(1,1,0.1);
-    RESOLUTION d(20,20,1);
-    MESH mesh(p, s, d, "Q4");
+    RESOLUTION d(20,20,2);
+    MESH mesh(p, s, d, "H8");
 
     cout << "Assigning material properties..."<< endl;
     MATERIALS materials;
@@ -24,7 +24,7 @@ int main()
 
     cout << "Initializing field variables..."<< endl;
     POINT cntr(0.5,0.5,0);
-    double a = 0.25;
+    double a = 0.25; //radius of the implicit sphere
     vector<double> phi = setVector(mesh.TotalPoints, 1);
     for (int i = 1; i <= mesh.TotalPoints; i++)
     {phi[i] = minnum(phi[i],pow(mesh.points[i].x-cntr.x,2)+pow(mesh.points[i].y-cntr.y,2)+pow(mesh.points[i].z-cntr.z,2)-pow(a,2));}

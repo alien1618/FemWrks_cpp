@@ -6,7 +6,7 @@ int main()
 	cout << "2D flow past cylinder" << endl;
 	cout << "-----------------------------------------" << endl;
 	cout << "Constructing mesh..."<< endl;
-    MESH mesh("mesh/FlowPastCylinder2D/mesh_627.dat");
+    MESH mesh("msh/FlowPastCylinder2D/mesh_627.dat");
 
     cout << "Assigning material properties..."<< endl;
     MATERIALS materials;
@@ -16,13 +16,13 @@ int main()
     cout << "Assigning boundary conditions..."<< endl;
     double Vxb = 1;
     BOUNDARY_CONDITIONS bc;
-    bc.Vx.assignDBC(mesh,"mesh/FlowPastCylinder2D/inlet_627.dat", Vxb);
-    bc.Vy.assignDBC(mesh,"mesh/FlowPastCylinder2D/inlet_627.dat", 0);
-    bc.Vz.assignDBC(mesh,"mesh/FlowPastCylinder2D/inlet_627.dat", 0);
-    bc.Vx.assignDBC(mesh,"mesh/FlowPastCylinder2D/walls_627.dat", 0);
-    bc.Vy.assignDBC(mesh,"mesh/FlowPastCylinder2D/walls_627.dat", 0);
-    bc.Vz.assignDBC(mesh,"mesh/FlowPastCylinder2D/walls_627.dat", 0);
-    bc.P.assignDBC(mesh,"mesh/FlowPastCylinder2D/outlet_627.dat", 0);
+    bc.Vx.assignDBC(mesh,"msh/FlowPastCylinder2D/inlet_627.dat", Vxb);
+    bc.Vy.assignDBC(mesh,"msh/FlowPastCylinder2D/inlet_627.dat", 0);
+    bc.Vz.assignDBC(mesh,"msh/FlowPastCylinder2D/inlet_627.dat", 0);
+    bc.Vx.assignDBC(mesh,"msh/FlowPastCylinder2D/walls_627.dat", 0);
+    bc.Vy.assignDBC(mesh,"msh/FlowPastCylinder2D/walls_627.dat", 0);
+    bc.Vz.assignDBC(mesh,"msh/FlowPastCylinder2D/walls_627.dat", 0);
+    bc.P.assignDBC(mesh,"msh/FlowPastCylinder2D/outlet_627.dat", 0);
 
     cout << "Initializing field variables..."<< endl;
     vector<double> Vx = setVector(mesh.TotalPoints, 1e-6);
