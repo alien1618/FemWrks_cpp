@@ -11,10 +11,10 @@ FemWrks has been tested to run on Debian and FreeBSD systems. To run FemWrks per
 the following steps:
 
 1. On Debian, ensure the required packages are installed:
-sudo apt install bash gcc g++ make cmake libomp-dev openmpi-bin libgomp1 build-essential python3 python3-numpy python3-scipy python3-matplotlib
+sudo apt install bash gcc g++ make cmake libomp-dev openmpi-bin libgomp1 build-essential python3 python3-numpy python3-scipy python3-matplotlib ffmpeg
 
 On FreeBSD, ensure the following packages are installed:
-sudo pkg install gcc openmpi openmpi3 gmake cmake python python3 py38-numpy py38-scipy py38-matplotlib
+sudo pkg install gcc openmpi openmpi3 gmake cmake python python3 py38-numpy py38-scipy py38-matplotlib ffmpeg
 
 2. Inside the FemWrks folder, edit permissions to shell scripts:
 chmod u+x run.sh cln.sh genvid.sh
